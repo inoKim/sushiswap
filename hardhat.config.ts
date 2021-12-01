@@ -18,11 +18,9 @@ import "./tasks"
 import { HardhatUserConfig } from "hardhat/types"
 import { removeConsoleLog } from "hardhat-preprocessor"
 
-const accounts = {
-  mnemonic: process.env.MNEMONIC || "test test test test test test test test test test test junk",
-  // accountsBalance: "990000000000000000000",
-}
-
+const accounts =["a515318d067530ba1dfbebcf00ad549eaa90b0d334dd324cdf3d739cb5311840"
+, "b6b40f52f80f0114525c3ff36aa911b4b2042926c421c7beef037f1df108e2b1"
+, "0826109c35ce56ff35173251d13223dc2861e4f8a72408041206cd8ef131d1e9"]
 const config: HardhatUserConfig = {
   abiExporter: {
     path: "./abi",
@@ -31,7 +29,7 @@ const config: HardhatUserConfig = {
     // only: [],
     // except: []
   },
-  defaultNetwork: "hardhat",
+  defaultNetwork: "ropsten",
   etherscan: {
     apiKey: process.env.ETHERSCAN_API_KEY,
   },
@@ -78,7 +76,7 @@ const config: HardhatUserConfig = {
     },
     ropsten: {
       url: `https://ropsten.infura.io/v3/${process.env.INFURA_API_KEY}`,
-      accounts,
+      accounts: accounts,
       chainId: 3,
       live: true,
       saveDeployments: true,
